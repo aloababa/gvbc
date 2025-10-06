@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Go git init** is a command-line application written in Go that calculates the bandwidth requirements for various video displays based on resolution, refresh rate, color depth, and timing standards. It supports different digital interfaces such as DisplayPort and HDMI and provides a user-friendly text-based user interface (TUI) for input and output.
+The **Go Video Bandwidth Calculator** is a command-line application written in Go that calculates the bandwidth requirements for various video displays based on resolution, refresh rate, color depth, and timing standards. It supports different digital interfaces such as DisplayPort and HDMI and provides a user-friendly text-based user interface (TUI) for input and output.
 
 ![Demo](./demo.gif)
 
