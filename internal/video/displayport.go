@@ -1,6 +1,10 @@
 package video
 
-import "github.com/hekmon/cunits/v3"
+import (
+	"strings"
+
+	"github.com/hekmon/cunits/v3"
+)
 
 type DisplayPort struct {
 	Version string
@@ -77,11 +81,10 @@ func (m DisplayPortTransmissionMode) GetBandwidth() cunits.Speed {
 }
 
 func (m DisplayPortTransmissionMode) EffectiveBandwidth() cunits.Speed {
-	switch m.Name {
-	case "RBR", "HBR", "HBR2", "HBR3":
-		return cunits.Speed{Bits: cunits.Bits(float64(m.MaxBandwidth.Bits) * (80.0 / 100.0))}
+	if strings.Contains(m.Name, "UHBR") {
+		return cunits.Speed{Bits: cunits.Bits(float64(m.MaxBandwidth.Bits) * (96.7 / 100.0))}
 	}
-	return cunits.Speed{Bits: cunits.Bits(float64(m.MaxBandwidth.Bits) * (96.7 / 100.0))}
+	return cunits.Speed{Bits: cunits.Bits(float64(m.MaxBandwidth.Bits) * (80.0 / 100.0))}
 }
 
 func (m DisplayPortTransmissionMode) MaxCompressedBandwidth(colorDepth ColorDepth) cunits.Speed {
